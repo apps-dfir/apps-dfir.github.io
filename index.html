@@ -72,14 +72,14 @@
     </section>
 
     <footer class="footer">
-      <div class="terminal" aria-label="Terminal signature">
-        <div class="tline">
+      <div class="termbar" aria-label="Terminal signature">
+        <div class="termline">
           <span class="tprompt">apps@ir:~$</span>
-          <span id="tcmd" class="ttext"></span><span id="tcur1" class="tcursor">█</span>
+          <span id="tcmd" class="ttext"></span><span id="tcur" class="tcursor">█</span>
         </div>
 
-        <div class="tline">
-          <span id="tout" class="ttext"></span><span id="tcur2" class="tcursor hidden">█</span>
+        <div class="termline">
+          <span id="tident" class="ttext"></span><span id="tcur2" class="tcursor hidden">█</span>
         </div>
       </div>
 
@@ -98,43 +98,56 @@
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       const cmdEl = document.getElementById("tcmd");
-      const outEl = document.getElementById("tout");
-      const cur1 = document.getElementById("tcur1");
+      const identEl = document.getElementById("tident");
+      const cur1 = document.getElementById("tcur");
       const cur2 = document.getElementById("tcur2");
 
-      if (!cmdEl || !outEl || !cur1 || !cur2) return;
+      if (!cmdEl || !identEl || !cur1 || !cur2) return;
 
       const cmdText = " whoami";
-      const outText = "Apps | Incident Response Lead + Threat Hunter";
+      const identityText = "Apps | Incident Response Lead + Threat Hunter";
 
-      function type(el, text, speed, done) {
-        let i = 0;
-        el.textContent = "";
-        const t = setInterval(() => {
-          el.textContent += text[i++];
-          if (i >= text.length) {
-            clearInterval(t);
-            done && done();
-          }
-        }, speed);
+      function type(el, text, speed) {
+        return new Promise(resolve => {
+          let i = 0;
+          el.textContent = "";
+          const t = setInterval(() => {
+            el.textContent += text[i++];
+            if (i >= text.length) {
+              clearInterval(t);
+              resolve();
+            }
+          }, speed);
+        });
       }
 
-      function showOutputCursor() {
+      function sleep(ms) {
+        return new Promise(r => setTimeout(r, ms));
+      }
+
+      async function run() {
+        if (prefersReduced) {
+          cmdEl.textContent = "";
+          cur1.classList.add("hidden");
+          cur2.classList.remove("hidden");
+          identEl.textContent = identityText;
+          return;
+        }
+
+        await type(cmdEl, cmdText, 70);
+        await sleep(450);
+
+        // clear command line (clear screen feel)
+        cmdEl.textContent = "";
+
+        // move cursor to identity line
         cur1.classList.add("hidden");
         cur2.classList.remove("hidden");
+
+        await type(identEl, identityText, 18);
       }
 
-      if (prefersReduced) {
-        cmdEl.textContent = cmdText;
-        showOutputCursor();
-        outEl.textContent = outText;
-        return;
-      }
-
-      type(cmdEl, cmdText, 70, () => {
-        showOutputCursor();
-        type(outEl, outText, 18);
-      });
+      run();
     })();
   </script>
 </body>
