@@ -223,7 +223,7 @@ h1{
 
 .links{margin-top:10px}
 
-/* ---------- Link styling (FIXED) ---------- */
+/* ---------- Link styling ---------- */
 
 a{
   color:rgba(231,238,248,.92);
@@ -247,7 +247,7 @@ a:focus-visible{
   border-bottom-color:transparent;
 }
 
-/* ---------- Writing lists ---------- */
+/* ---------- Lists used on writing + featured ---------- */
 
 .featured,
 .writing-list{
