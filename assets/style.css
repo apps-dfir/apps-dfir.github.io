@@ -284,17 +284,21 @@ a:focus-visible{
 
 .dot{opacity:.6}
 
-/* Terminal (NO BOX / NO OUTLINE) */
-.terminal{
-  display:inline-block;
+/* Terminal bar (full width like content, centered, no box) */
+.termbar{
+  width:100%;
+  max-width:1080px;
+  margin:18px auto 0;
+  text-align:center;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size:13px;
-  line-height:1.55;
+  line-height:1.6;
   user-select:none;
-  text-align:left;
 }
 
-.tline{white-space:pre}
+.termline{
+  white-space:pre;
+}
 
 .tprompt{color:var(--accent)}
 .ttext{color:rgba(231,238,248,.92)}
