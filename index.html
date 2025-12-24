@@ -72,10 +72,12 @@
     </section>
 
     <footer class="footer">
-      
+
       <div class="termbar" aria-label="Terminal signature">
-        <span class="tprompt">apps@ir:~$</span>
-        <span id="tcontent" class="ttext"></span><span class="tcursor">█</span>
+        <span class="terminal-line">
+          <span class="tprompt">apps@ir:~$</span>
+          <span id="tcontent" class="ttext"></span><span class="tcursor">█</span>
+        </span>
       </div>
 
       <div class="fine">
@@ -97,7 +99,6 @@
 
       const cmd = " whoami";
       const identity = " Apps | Incident Response Lead + Threat Hunter";
-
 
       function intervalFor(text, totalMs) {
         const n = Math.max(1, text.length);
@@ -130,16 +131,16 @@
           return;
         }
 
-        
+        // ~5 seconds for the whoami phase
         await typeText(cmd, 1800);
 
-       
-        await sleep(500);
+        // pause like command execution
+        await sleep(450);
 
-        
+        // clear line
         content.textContent = "";
 
-        
+        // ~5 seconds for the identity phase
         await typeText(identity, 5200);
       }
 
