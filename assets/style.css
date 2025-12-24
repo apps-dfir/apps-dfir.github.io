@@ -22,6 +22,8 @@ body{
     linear-gradient(180deg, var(--bg) 0%, #05070B 100%);
 }
 
+/* ---------- Background layers ---------- */
+
 .bg{
   position:fixed;
   inset:0;
@@ -54,6 +56,8 @@ body{
   mask-image:radial-gradient(800px 600px at 72% 18%, rgba(0,0,0,.9), transparent 78%);
 }
 
+/* ---------- Layout ---------- */
+
 .wrap{
   position:relative;
   z-index:1;
@@ -61,6 +65,8 @@ body{
   margin:0 auto;
   padding:44px 18px 36px;
 }
+
+/* ---------- Hero ---------- */
 
 .hero{
   position:relative;
@@ -90,6 +96,8 @@ body{
 }
 
 .hero-compact h1{font-size:40px}
+
+/* ---------- Typography ---------- */
 
 .badge{
   display:inline-block;
@@ -141,6 +149,8 @@ h1{
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 
+/* ---------- Buttons ---------- */
+
 .cta{
   display:flex;
   gap:10px;
@@ -169,6 +179,8 @@ h1{
 }
 
 .btn.primary:hover{border-color:rgba(99,243,165,.85)}
+
+/* ---------- Grid & Cards ---------- */
 
 .grid{
   margin-top:16px;
@@ -205,22 +217,47 @@ h1{
 
 .card li{margin:8px 0}
 
+.span2{grid-column:1 / -1}
+
 .muted{color:var(--muted)}
 
 .links{margin-top:10px}
 
-a{color:var(--accent2)}
-a:hover{color:#B6ECFF}
+/* ---------- Link styling (FIXED) ---------- */
 
-.featured{padding-left:18px}
-.featured li{margin:14px 0 18px}
-.featured a{color:var(--text);text-decoration:none}
-.featured a:hover{color:var(--accent)}
+a{
+  color:rgba(231,238,248,.92);
+  text-decoration:none;
+  border-bottom:1px solid rgba(101,214,255,.22);
+  padding-bottom:1px;
+}
 
-.writing-list{padding-left:18px}
-.writing-list li{margin:14px 0 18px}
-.writing-list a{color:var(--text);text-decoration:none}
-.writing-list a:hover{color:var(--accent)}
+a:hover{
+  color:var(--accent2);
+  border-bottom-color:rgba(101,214,255,.55);
+}
+
+a:visited{
+  color:rgba(231,238,248,.92);
+}
+
+a:focus-visible{
+  outline:2px solid rgba(101,214,255,.55);
+  outline-offset:3px;
+  border-bottom-color:transparent;
+}
+
+/* ---------- Writing lists ---------- */
+
+.featured,
+.writing-list{
+  padding-left:18px;
+}
+
+.featured li,
+.writing-list li{
+  margin:14px 0 18px;
+}
 
 .postmeta{
   margin:6px 0 0;
@@ -229,7 +266,7 @@ a:hover{color:#B6ECFF}
   line-height:1.35;
 }
 
-.span2{grid-column:1 / -1}
+/* ---------- Footer ---------- */
 
 .footer{
   margin-top:16px;
