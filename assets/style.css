@@ -87,7 +87,7 @@ body{
   background-size:900px 220px;
   opacity:.20;
   mask-image:radial-gradient(700px 260px at 70% 55%, rgba(0,0,0,.95), transparent 70%);
-  background-image:url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='900'%20height='220'%20viewBox='0%200%20900%20220'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='0'%3E%3Cstop%20offset='0'%20stop-color='%2365D6FF'%20stop-opacity='.55'/%3E%3Cstop%20offset='.55'%20stop-color='%2363F3A5'%20stop-opacity='.45'/%3E%3Cstop%20offset='1'%20stop-color='%2365D6FF'%20stop-opacity='.18'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath%20d='M20%20120%20C120%2070%2C%20190%20170%2C%20290%20115%20S480%2070%2C%20590%20122%20S740%20165%2C%20880%20100'%20fill='none'%20stroke='url(%23g)'%20stroke-width='2'/%3E%3Ccircle%20cx='290'%20cy='115'%20r='5'%20fill='%2365D6FF'%20fill-opacity='.35'/%3E%3Ccircle%20cx='590'%20cy='122'%20r='5'%20fill='%2363F3A5'%20fill-opacity='.30'/%3E%3Ccircle%20cx='880'%20cy='100'%20r='5'%20fill='%2365D6FF'%20fill-opacity='.25'/%3E%3Cpath%20d='M20%20120%20L290%20115%20L590%20122%20L880%20100'%20fill='none'%20stroke='%23FFFFFF'%20stroke-opacity='.10'%20stroke-width='1'%20stroke-dasharray='4%207'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='220' viewBox='0 0 900 220'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%2365D6FF' stop-opacity='.55'/%3E%3Cstop offset='.55' stop-color='%2363F3A5' stop-opacity='.45'/%3E%3Cstop offset='1' stop-color='%2365D6FF' stop-opacity='.18'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M20 120 C120 70, 190 170, 290 115 S480 70, 590 122 S740 165, 880 100' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3Ccircle cx='290' cy='115' r='5' fill='%2365D6FF' fill-opacity='.35'/%3E%3Ccircle cx='590' cy='122' r='5' fill='%2363F3A5' fill-opacity='.30'/%3E%3Ccircle cx='880' cy='100' r='5' fill='%2365D6FF' fill-opacity='.25'/%3E%3C/svg%3E");
 }
 
 .hero > *{position:relative;z-index:1}
@@ -120,7 +120,7 @@ h1{
   max-width:70ch;
 }
 
-/* ---------- Focus line ---------- */
+/* ---------- Focus ---------- */
 
 .focus{
   margin:0 0 14px;
@@ -254,7 +254,7 @@ h1{
   .postline{flex-wrap:wrap}
 }
 
-/* ---------- Link styling (global fix) ---------- */
+/* ---------- Link styling ---------- */
 
 a{
   color:rgba(231,238,248,.92);
@@ -268,9 +268,7 @@ a:hover{
   border-bottom-color:rgba(101,214,255,.55);
 }
 
-a:visited{
-  color:rgba(231,238,248,.92);
-}
+a:visited{color:rgba(231,238,248,.92)}
 
 a:focus-visible{
   outline:2px solid rgba(101,214,255,.55);
@@ -278,7 +276,7 @@ a:focus-visible{
   border-bottom-color:transparent;
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer + terminal ---------- */
 
 .footer{
   margin-top:16px;
@@ -287,27 +285,22 @@ a:focus-visible{
   text-align:center;
 }
 
-.fine{
-  display:flex;
-  gap:8px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.dot{opacity:.6}
-
-/* ---------- Terminal signature ---------- */
-
 .sig{
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size:13px;
-  margin-bottom:10px;
+  line-height:1.5;
   user-select:none;
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(0,0,0,.20);
+  border:1px solid rgba(101,214,255,.12);
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
 .prompt{color:var(--accent)}
-.sep,.path{color:var(--muted)}
-.typed{color:var(--text)}
+.sep,.path{color:rgba(231,238,248,.70)}
+.typed{color:rgba(231,238,248,.92)}
 
 .cursor{
   color:var(--accent2);
@@ -319,3 +312,12 @@ a:focus-visible{
 @media (prefers-reduced-motion: reduce){
   .cursor{animation:none}
 }
+
+.fine{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.dot{opacity:.6}
