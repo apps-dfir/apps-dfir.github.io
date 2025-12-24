@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Apps | DFIR • Threat Hunting</title>
+  <meta name="description" content="Apps | DFIR + Threat Hunting. Practical notes and investigations. Links to Medium posts." />
+
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="badge">apps-ir.com</div>
+
+      <h1>Apps</h1>
+
+      <p class="sub">
+        Incident Response + Threat Hunting. Practical notes, repeatable workflows, and defender tradecraft.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">
+          Read on Medium
+        </a>
+        <a class="btn" href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">
+          X: @apps__ir
+        </a>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <h2>What I do</h2>
+        <ul>
+          <li>Lead incident response investigations end-to-end</li>
+          <li>Threat hunting driven by telemetry and repeatable logic</li>
+          <li>Adversary tooling and tradecraft analysis (what operators actually do)</li>
+          <li>Detection notes that survive production constraints</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Writing</h2>
+        <p class="muted">
+          Long-form posts live on Medium. This site is the front door and a curated index.
+        </p>
+        <div class="links">
+          <a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">All posts →</a>
+          <a href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">Threads / updates →</a>
+        </div>
+      </div>
+
+      <div class="card span2">
+        <h2>Featured posts</h2>
+        <p class="muted">Replace these with your top 3–6 direct Medium post links.</p>
+
+        <ul class="featured">
+          <li><a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Post #1 (replace with direct link)</a></li>
+          <li><a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Post #2 (replace with direct link)</a></li>
+          <li><a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Post #3 (replace with direct link)</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <!-- Terminal signature typing effect -->
+      <div class="sig term" aria-label="Terminal signature">
+        <span class="prompt">apps@ir</span><span class="sep">:</span><span class="path">~</span><span class="sep">$</span>
+        <span id="typed" class="typed"></span><span class="cursor">▌</span>
+      </div>
+
+      <div class="fine">
+        <span>© <span id="y"></span> Apps</span>
+        <span class="dot">•</span>
+        <span><a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Medium</a></span>
+        <span class="dot">•</span>
+        <span><a href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">X</a></span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // typing effect
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const lines = [
+      "whoami",
+      "Apps | Incident Response Lead + Threat Hunter",
+      "focus: investigations • hunting • detection engineering",
+    ];
+
+    const el = document.getElementById("typed");
+    let line = 0, i = 0, deleting = false;
+
+    const typeSpeed = 28;
+    const deleteSpeed = 14;
+    const pauseAfterLine = 900;
+    const pauseAfterDelete = 250;
+
+    function step() {
+      if (prefersReduced) {
+        el.textContent = "Apps | Incident Response Lead + Threat Hunter";
+        return;
+      }
+
+      const text = lines[line];
+
+      if (!deleting) {
+        el.textContent = text.slice(0, i++);
+        if (i <= text.length) return setTimeout(step, typeSpeed);
+        deleting = true;
+        return setTimeout(step, pauseAfterLine);
+      } else {
+        el.textContent = text.slice(0, i--);
+        if (i >= 0) return setTimeout(step, deleteSpeed);
+        deleting = false;
+        line = (line + 1) % lines.length;
+        i = 0;
+        return setTimeout(step, pauseAfterDelete);
+      }
+    }
+
+    step();
+  </script>
+</body>
+</html>
