@@ -72,15 +72,10 @@
     </section>
 
     <footer class="footer">
+      
       <div class="termbar" aria-label="Terminal signature">
-        <div class="termline">
-          <span class="tprompt">apps@ir:~$</span>
-          <span id="tcmd" class="ttext"></span><span id="tcur" class="tcursor">█</span>
-        </div>
-
-        <div class="termline">
-          <span id="tident" class="ttext"></span><span id="tcur2" class="tcursor hidden">█</span>
-        </div>
+        <span class="tprompt">apps@ir:~$</span>
+        <span id="tcontent" class="ttext"></span><span class="tcursor">█</span>
       </div>
 
       <div class="fine">
@@ -97,22 +92,26 @@
     (function () {
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      const cmdEl = document.getElementById("tcmd");
-      const identEl = document.getElementById("tident");
-      const cur1 = document.getElementById("tcur");
-      const cur2 = document.getElementById("tcur2");
+      const content = document.getElementById("tcontent");
+      if (!content) return;
 
-      if (!cmdEl || !identEl || !cur1 || !cur2) return;
+      const cmd = " whoami";
+      const identity = " Apps | Incident Response Lead + Threat Hunter";
 
-      const cmdText = " whoami";
-      const identityText = "Apps | Incident Response Lead + Threat Hunter";
 
-      function type(el, text, speed) {
+      function intervalFor(text, totalMs) {
+        const n = Math.max(1, text.length);
+        const raw = Math.round(totalMs / n);
+        return Math.max(20, Math.min(raw, 250));
+      }
+
+      function typeText(text, totalMs) {
         return new Promise(resolve => {
+          const speed = intervalFor(text, totalMs);
           let i = 0;
-          el.textContent = "";
+          content.textContent = "";
           const t = setInterval(() => {
-            el.textContent += text[i++];
+            content.textContent += text[i++];
             if (i >= text.length) {
               clearInterval(t);
               resolve();
@@ -127,24 +126,21 @@
 
       async function run() {
         if (prefersReduced) {
-          cmdEl.textContent = "";
-          cur1.classList.add("hidden");
-          cur2.classList.remove("hidden");
-          identEl.textContent = identityText;
+          content.textContent = identity;
           return;
         }
 
-        await type(cmdEl, cmdText, 70);
+        
+        await typeText(cmd, 5000);
+
+       
         await sleep(450);
 
-        // clear command line (clear screen feel)
-        cmdEl.textContent = "";
+        
+        content.textContent = "";
 
-        // move cursor to identity line
-        cur1.classList.add("hidden");
-        cur2.classList.remove("hidden");
-
-        await type(identEl, identityText, 18);
+        
+        await typeText(identity, 5000);
       }
 
       run();
