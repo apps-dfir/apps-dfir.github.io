@@ -72,11 +72,15 @@
     </section>
 
     <footer class="footer">
-      <div class="sig" aria-label="Terminal signature">
-        <span class="prompt">apps@ir</span><span class="sep">:</span><span class="path">~</span><span class="sep">$</span>
-        <span id="cmd" class="typed"></span>
-        <span id="out" class="typed"></span>
-        <span class="cursor">█</span>
+      <div class="terminal" aria-label="Terminal signature">
+        <div class="tline">
+          <span class="tprompt">apps@ir:~$</span>
+          <span id="tcmd" class="ttext"></span><span id="tcur1" class="tcursor">█</span>
+        </div>
+
+        <div class="tline">
+          <span id="tout" class="ttext"></span><span id="tcur2" class="tcursor hidden">█</span>
+        </div>
       </div>
 
       <div class="fine">
@@ -92,14 +96,20 @@
   <script>
     (function () {
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const cmdEl = document.getElementById("cmd");
-      const outEl = document.getElementById("out");
+
+      const cmdEl = document.getElementById("tcmd");
+      const outEl = document.getElementById("tout");
+      const cur1 = document.getElementById("tcur1");
+      const cur2 = document.getElementById("tcur2");
+
+      if (!cmdEl || !outEl || !cur1 || !cur2) return;
 
       const cmdText = " whoami";
-      const outText = "  Apps | Incident Response Lead + Threat Hunter";
+      const outText = "Apps | Incident Response Lead + Threat Hunter";
 
       function type(el, text, speed, done) {
         let i = 0;
+        el.textContent = "";
         const t = setInterval(() => {
           el.textContent += text[i++];
           if (i >= text.length) {
@@ -109,14 +119,20 @@
         }, speed);
       }
 
+      function showOutputCursor() {
+        cur1.classList.add("hidden");
+        cur2.classList.remove("hidden");
+      }
+
       if (prefersReduced) {
-        cmdEl.textContent = cmdText + "\n";
+        cmdEl.textContent = cmdText;
+        showOutputCursor();
         outEl.textContent = outText;
         return;
       }
 
       type(cmdEl, cmdText, 70, () => {
-        cmdEl.textContent += "\n";
+        showOutputCursor();
         type(outEl, outText, 18);
       });
     })();

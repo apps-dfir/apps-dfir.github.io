@@ -22,8 +22,7 @@ body{
     linear-gradient(180deg, var(--bg) 0%, #05070B 100%);
 }
 
-/* ---------- Background layers ---------- */
-
+/* Background layers */
 .bg{
   position:fixed;
   inset:0;
@@ -56,8 +55,7 @@ body{
   mask-image:radial-gradient(800px 600px at 72% 18%, rgba(0,0,0,.9), transparent 78%);
 }
 
-/* ---------- Layout ---------- */
-
+/* Layout */
 .wrap{
   position:relative;
   z-index:1;
@@ -66,8 +64,7 @@ body{
   padding:44px 18px 36px;
 }
 
-/* ---------- Hero ---------- */
-
+/* Hero */
 .hero{
   position:relative;
   overflow:hidden;
@@ -91,10 +88,8 @@ body{
 }
 
 .hero > *{position:relative;z-index:1}
-.hero-compact h1{font-size:40px}
 
-/* ---------- Typography ---------- */
-
+/* Typography */
 .badge{
   display:inline-block;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -120,8 +115,7 @@ h1{
   max-width:70ch;
 }
 
-/* ---------- Focus ---------- */
-
+/* Focus */
 .focus{
   margin:0 0 14px;
   color:var(--muted);
@@ -144,8 +138,7 @@ h1{
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 
-/* ---------- Buttons ---------- */
-
+/* Buttons */
 .cta{
   display:flex;
   gap:10px;
@@ -175,14 +168,15 @@ h1{
 
 .btn.primary:hover{border-color:rgba(99,243,165,.85)}
 
-/* ---------- Grid & Cards ---------- */
-
+/* Grid & Cards */
 .grid{
   margin-top:16px;
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:14px;
 }
+
+.span2{grid-column:1 / -1}
 
 @media (max-width:760px){
   .grid{grid-template-columns:1fr}
@@ -204,8 +198,6 @@ h1{
   letter-spacing:.02em;
 }
 
-/* ---------- Category blurbs ---------- */
-
 .blurb{
   margin:6px 0 10px;
   color:var(--muted);
@@ -213,8 +205,7 @@ h1{
   line-height:1.35;
 }
 
-/* ---------- Writing lists ---------- */
-
+/* Writing lists */
 .writing-list{
   margin:0;
   padding-left:18px;
@@ -254,8 +245,7 @@ h1{
   .postline{flex-wrap:wrap}
 }
 
-/* ---------- Link styling ---------- */
-
+/* Link styling */
 a{
   color:rgba(231,238,248,.92);
   text-decoration:none;
@@ -276,8 +266,7 @@ a:focus-visible{
   border-bottom-color:transparent;
 }
 
-/* ---------- Footer + terminal ---------- */
-
+/* Footer */
 .footer{
   margin-top:16px;
   padding:18px 8px 0;
@@ -285,39 +274,40 @@ a:focus-visible{
   text-align:center;
 }
 
-.sig{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:13px;
-  line-height:1.5;
-  user-select:none;
-  display:inline-block;
-  padding:10px 14px;
-  border-radius:12px;
-  background:rgba(0,0,0,.20);
-  border:1px solid rgba(101,214,255,.12);
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-}
-
-.prompt{color:var(--accent)}
-.sep,.path{color:rgba(231,238,248,.70)}
-.typed{color:rgba(231,238,248,.92)}
-
-.cursor{
-  color:var(--accent2);
-  animation:blink 1s steps(1) infinite;
-}
-
-@keyframes blink{50%{opacity:0}}
-
-@media (prefers-reduced-motion: reduce){
-  .cursor{animation:none}
-}
-
 .fine{
   display:flex;
   gap:8px;
   justify-content:center;
   flex-wrap:wrap;
+  margin-top:10px;
 }
 
 .dot{opacity:.6}
+
+/* Terminal (NO BOX / NO OUTLINE) */
+.terminal{
+  display:inline-block;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:13px;
+  line-height:1.55;
+  user-select:none;
+  text-align:left;
+}
+
+.tline{white-space:pre}
+
+.tprompt{color:var(--accent)}
+.ttext{color:rgba(231,238,248,.92)}
+
+.tcursor{
+  color:var(--accent2);
+  animation:blink 1s steps(1) infinite;
+}
+
+.hidden{display:none}
+
+@keyframes blink{50%{opacity:0}}
+
+@media (prefers-reduced-motion: reduce){
+  .tcursor{animation:none}
+}
