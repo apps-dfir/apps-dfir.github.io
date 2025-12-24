@@ -284,20 +284,17 @@ a:focus-visible{
 
 .dot{opacity:.6}
 
-/* Terminal bar (full width like content, centered, no box) */
+
 .termbar{
   width:100%;
-  max-width:1080px;
+  max-width:1080px;          
   margin:18px auto 0;
-  text-align:center;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size:13px;
   line-height:1.6;
   user-select:none;
-}
-
-.termline{
   white-space:pre;
+  text-align:center;
 }
 
 .tprompt{color:var(--accent)}
@@ -308,9 +305,9 @@ a:focus-visible{
   animation:blink 1s steps(1) infinite;
 }
 
-.hidden{display:none}
-
-@keyframes blink{50%{opacity:0}}
+@keyframes blink{
+  50%{opacity:0}
+}
 
 @media (prefers-reduced-motion: reduce){
   .tcursor{animation:none}
