@@ -284,17 +284,22 @@ a:focus-visible{
 
 .dot{opacity:.6}
 
-
+/* Terminal */
 .termbar{
   width:100%;
-  max-width:1080px;          
+  max-width:1080px;
   margin:18px auto 0;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   font-size:13px;
   line-height:1.6;
   user-select:none;
-  white-space:pre;
   text-align:center;
+  white-space:normal;
+}
+
+.terminal-line{
+  display:inline-block;
+  white-space:nowrap;
 }
 
 .tprompt{color:var(--accent)}
