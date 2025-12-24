@@ -49,7 +49,7 @@ body{
   background-repeat:no-repeat;
   background-position:75% 10%;
   background-size:min(1100px, 85vw);
-  opacity:.08;
+  opacity:.05;
   filter:grayscale(1) contrast(1.08);
   transform:rotate(-8deg);
   mask-image:radial-gradient(
