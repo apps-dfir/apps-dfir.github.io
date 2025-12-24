@@ -150,6 +150,7 @@ h1{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+  gap:8px;
   padding:10px 14px;
   border-radius:12px;
   border:1px solid var(--line);
@@ -316,4 +317,15 @@ a:focus-visible{
 
 @media (prefers-reduced-motion: reduce){
   .tcursor{animation:none}
+}
+
+/* ===== SVG ICON SUPPORT (ADDED) ===== */
+a svg{
+  display:inline-block;
+  vertical-align:middle;
+  fill:currentColor;
+}
+
+a:hover svg{
+  color:var(--accent2);
 }
