@@ -320,6 +320,7 @@ a:focus-visible{
 }
 
 
+
 svg.icon{
   display:inline-block;
   width:1em;
@@ -329,29 +330,25 @@ svg.icon{
   fill:currentColor;
 }
 
-
 a.icon-btn,
 a.icon-link{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  border-bottom:0;          
+  border-bottom:0;
   padding-bottom:0;
 }
-
 
 a.icon-btn:hover,
 a.icon-link:hover{
   color:var(--accent2);
 }
 
-
 svg.icon[viewBox="0 0 1043.63 592.71"]{
   transform:scale(1.15);
   transform-origin:center;
 }
 
-/* Hover color for icons */
 a:hover svg.icon{
   color:var(--accent2);
 }
