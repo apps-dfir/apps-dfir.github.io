@@ -23,6 +23,12 @@
         Incident Response + Threat Hunting. Practical investigations, repeatable workflows, and defender tradecraft at scale.
       </p>
 
+      <p class="focus">
+        <span class="focus-label">Current focus:</span>
+        Turning threat hunts into durable detections through API-driven workflows, artifact analysis, and operational feedback loops.
+        <span class="focus-year">2026</span>
+      </p>
+
       <div class="cta">
         <a class="btn primary" href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">
           Read on Medium
@@ -49,35 +55,20 @@
         <p class="muted">
           Long-form posts live on Medium. This site is the front door and a curated index.
         </p>
+        <div class="links">
+          <a href="/writing/">Curated writing index →</a>
+        </div>
       </div>
 
       <div class="card span2">
-        <h2>Featured posts</h2>
+        <h2>Featured post</h2>
 
         <ul class="featured">
           <li>
-            <strong>Run Cortex XSIAM XQL hunts via the Public API</strong><br />
-            <span class="postmeta">From UI queries to repeatable workflows</span>
-          </li>
-
-          <li>
-            <strong>Malicious LNK file analysis</strong><br />
-            <span class="postmeta">Artifact breakdown and investigation notes</span>
-          </li>
-
-          <li>
-            <strong>Obfuscated VBScript analysis</strong><br />
-            <span class="postmeta">Deobfuscation workflow and behavioral takeaways</span>
-          </li>
-
-          <li>
-            <strong>It’s Dark(gate)!</strong><br />
-            <span class="postmeta">Tradecraft notes and defender pivots</span>
-          </li>
-
-          <li>
-            <strong>What’s PPAM?</strong><br />
-            <span class="postmeta">Quick reference and operational context</span>
+            <a href="https://apps-ir.com/run-cortex-xsiam-xql-hunts-via-the-public-api-from-a-jupyter-notebook-1151cb225d50" target="_blank" rel="noreferrer">
+              Run Cortex XSIAM XQL hunts via the Public API
+            </a>
+            <div class="postmeta">From UI queries to repeatable workflows</div>
           </li>
         </ul>
       </div>
@@ -92,6 +83,8 @@
       <div class="fine">
         <span>© <span id="y"></span> Apps</span>
         <span class="dot">•</span>
+        <a href="/writing/">Writing</a>
+        <span class="dot">•</span>
         <a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Medium</a>
         <span class="dot">•</span>
         <a href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">X</a>
@@ -104,7 +97,6 @@
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const el = document.getElementById("typed");
-
     const FINAL_LINE = "Apps | Incident Response Lead + Threat Hunter";
 
     if (prefersReduced) {
