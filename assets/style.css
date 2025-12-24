@@ -44,16 +44,17 @@ body{
 .bg::after{
   content:"";
   position:absolute;
-  inset:-8vh -8vw;
+  inset:0;
   background-image:url("/assets/dfir-watermark.png");
   background-repeat:no-repeat;
-  background-position:65% 15%;
-  background-size:min(1200px, 95vw);
-  opacity:.08;
-  filter:grayscale(1) contrast(1.1);
-  transform:rotate(-6deg);
-  mask-image:radial-gradient(900px 700px at 55% 20%, rgba(0,0,0,.9), transparent 70%);
+  background-position:center;
+  background-size:contain;
+  opacity:.35;
+  filter:none;
+  transform:none;
+  mask-image:none;
 }
+
 
 .wrap{
   position:relative;
