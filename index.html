@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>Apps | DFIR + Threat Hunting</title>
-  <meta name="description" content="Apps | DFIR + Threat Hunting. Practical investigations, repeatable workflows, and defender tradecraft at scale." />
+  <meta name="description" content="Incident Response and Threat Hunting. Practical investigations, repeatable workflows, and defender tradecraft at scale." />
 
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
@@ -20,22 +20,20 @@
       <h1>Apramey ‘Apps’ Shurpali</h1>
 
       <p class="sub">
-        Incident Response + Threat Hunting. Practical investigations, repeatable workflows, and defender tradecraft at scale.
+        Incident Response + Threat Hunting. Practical investigations, repeatable workflows,
+        and defender tradecraft at scale.
       </p>
 
       <p class="focus">
         <span class="focus-label">Current focus:</span>
-        Turning threat hunts into durable detections through API-driven workflows, artifact analysis, and operational feedback loops.
+        Turning threat hunts into durable detections through API-driven workflows,
+        artifact analysis, and operational feedback loops.
         <span class="focus-year">2026</span>
       </p>
 
       <div class="cta">
-        <a class="btn primary" href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">
-          Read on Medium
-        </a>
-        <a class="btn" href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">
-          X: @apps__ir
-        </a>
+        <a class="btn primary" href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Read on Medium</a>
+        <a class="btn" href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">X: @apps_ir</a>
       </div>
     </header>
 
@@ -52,21 +50,21 @@
 
       <div class="card">
         <h2>Writing</h2>
-        <p class="muted">
-          Long-form posts live on Medium. This site is the front door and a curated index.
-        </p>
-        <div class="links">
-          <a href="/writing/">Curated writing index →</a>
-        </div>
+        <div class="blurb">Long-form posts live on Medium. This site is the front door and a curated index.</div>
+        <a href="/writing" rel="noreferrer">Curated writing index →</a>
       </div>
 
       <div class="card span2">
         <h2>Featured post</h2>
-        <ul class="featured">
+        <ul class="writing-list">
           <li>
-            <a href="https://apps-ir.com/run-cortex-xsiam-xql-hunts-via-the-public-api-from-a-jupyter-notebook-1151cb225d50" target="_blank" rel="noreferrer">
-              Run Cortex XSIAM XQL hunts via the Public API
-            </a>
+            <div class="postline">
+              <a href="https://apps-ir.com/run-cortex-xsiam-xql-hunts-via-the-public-api-from-a-jupyter-notebook-1151cb225d50"
+                 target="_blank" rel="noreferrer">
+                Run Cortex XSIAM XQL hunts via the Public API
+              </a>
+              <span class="year">2025</span>
+            </div>
             <div class="postmeta">From UI queries to repeatable workflows</div>
           </li>
         </ul>
@@ -74,15 +72,15 @@
     </section>
 
     <footer class="footer">
-      <div class="sig term" aria-label="Terminal signature">
+      <div class="sig" aria-label="Terminal signature">
         <span class="prompt">apps@ir</span><span class="sep">:</span><span class="path">~</span><span class="sep">$</span>
-        <span id="typed" class="typed"></span><span class="cursor">▌</span>
+        <span id="cmd" class="typed"></span>
+        <span id="out" class="typed"></span>
+        <span class="cursor">█</span>
       </div>
 
       <div class="fine">
-        <span>© <span id="y"></span> Apps</span>
-        <span class="dot">•</span>
-        <a href="/writing/">Writing</a>
+        <a href="/writing" rel="noreferrer">Writing</a>
         <span class="dot">•</span>
         <a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Medium</a>
         <span class="dot">•</span>
@@ -92,22 +90,36 @@
   </main>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    (function () {
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const cmdEl = document.getElementById("cmd");
+      const outEl = document.getElementById("out");
 
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const el = document.getElementById("typed");
-    const FINAL_LINE = "Apps | Incident Response Lead + Threat Hunter";
+      const cmdText = " whoami";
+      const outText = "  Apps | Incident Response Lead + Threat Hunter";
 
-    if (prefersReduced) {
-      el.textContent = FINAL_LINE;
-    } else {
-      let i = 0;
-      function type() {
-        el.textContent = FINAL_LINE.slice(0, i++);
-        if (i <= FINAL_LINE.length) setTimeout(type, 30);
+      function type(el, text, speed, done) {
+        let i = 0;
+        const t = setInterval(() => {
+          el.textContent += text[i++];
+          if (i >= text.length) {
+            clearInterval(t);
+            done && done();
+          }
+        }, speed);
       }
-      type();
-    }
+
+      if (prefersReduced) {
+        cmdEl.textContent = cmdText + "\n";
+        outEl.textContent = outText;
+        return;
+      }
+
+      type(cmdEl, cmdText, 70, () => {
+        cmdEl.textContent += "\n";
+        type(outEl, outText, 18);
+      });
+    })();
   </script>
 </body>
 </html>
