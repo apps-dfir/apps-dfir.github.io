@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>Apps | DFIR + Threat Hunting</title>
-  <meta name="description" content="Apps| DFIR + Threat Hunting. Practical investigations, repeatable workflows, and defender tradecraft." />
+  <meta name="description" content="Apps | DFIR + Threat Hunting. Practical investigations, repeatable workflows, and defender tradecraft at scale." />
 
   <link rel="stylesheet" href="/assets/style.css" />
 </head>
@@ -17,10 +17,10 @@
     <header class="hero">
       <div class="badge">apps-ir.com</div>
 
-      <h1>Apramey 'Apps' Shurpali</h1>
+      <h1>Apramey ‘Apps’ Shurpali</h1>
 
       <p class="sub">
-        Incident Response + Threat Hunting. Practical investigations, repeatable workflows, and defender tradecraft.
+        Incident Response + Threat Hunting. Practical investigations, repeatable workflows, and defender tradecraft at scale.
       </p>
 
       <div class="cta">
@@ -56,38 +56,28 @@
 
         <ul class="featured">
           <li>
-            <a href="https://apps-ir.com/run-cortex-xsiam-xql-hunts-via-the-public-api-from-a-jupyter-notebook-1151cb225d50" target="_blank" rel="noreferrer">
-              Run Cortex XSIAM XQL hunts via the Public API
-            </a>
-            <div class="postmeta">From UI queries to repeatable workflows</div>
+            <strong>Run Cortex XSIAM XQL hunts via the Public API</strong><br />
+            <span class="postmeta">From UI queries to repeatable workflows</span>
           </li>
 
           <li>
-            <a href="https://apps-ir.com/malicious-lnk-file-analysis-0726ba1d5122" target="_blank" rel="noreferrer">
-              Malicious LNK file analysis
-            </a>
-            <div class="postmeta">Artifact breakdown and investigation notes</div>
+            <strong>Malicious LNK file analysis</strong><br />
+            <span class="postmeta">Artifact breakdown and investigation notes</span>
           </li>
 
           <li>
-            <a href="https://apps-ir.com/obfuscated-vbscript-analysis-2c4e900af2f3" target="_blank" rel="noreferrer">
-              Obfuscated VBScript analysis
-            </a>
-            <div class="postmeta">Deobfuscation workflow and behavioral takeaways</div>
+            <strong>Obfuscated VBScript analysis</strong><br />
+            <span class="postmeta">Deobfuscation workflow and behavioral takeaways</span>
           </li>
 
           <li>
-            <a href="https://apps-ir.com/its-dark-gate-208a691b4b32" target="_blank" rel="noreferrer">
-              It’s Dark(gate)!
-            </a>
-            <div class="postmeta">Tradecraft notes and defender pivots</div>
+            <strong>It’s Dark(gate)!</strong><br />
+            <span class="postmeta">Tradecraft notes and defender pivots</span>
           </li>
 
           <li>
-            <a href="https://apps-ir.com/whats-ppam-c6aa2c6318f8" target="_blank" rel="noreferrer">
-              What’s PPAM?
-            </a>
-            <div class="postmeta">Quick reference and operational context</div>
+            <strong>What’s PPAM?</strong><br />
+            <span class="postmeta">Quick reference and operational context</span>
           </li>
         </ul>
       </div>
@@ -102,9 +92,9 @@
       <div class="fine">
         <span>© <span id="y"></span> Apps</span>
         <span class="dot">•</span>
-        <span><a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Medium</a></span>
+        <a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer">Medium</a>
         <span class="dot">•</span>
-        <span><a href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">X</a></span>
+        <a href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">X</a>
       </div>
     </footer>
   </main>
@@ -116,35 +106,16 @@
     const el = document.getElementById("typed");
 
     const FINAL_LINE = "Apps | Incident Response Lead + Threat Hunter";
-    const lines = [
-      "whoami",
-      FINAL_LINE,
-      "focus: investigations • hunting • detection engineering"
-    ];
-
-    const typeSpeed = 28;
-    const pause = 750;
-
-    function type(text, cb) {
-      let i = 0;
-      function tick() {
-        el.textContent = text.slice(0, i++);
-        if (i <= text.length) return setTimeout(tick, typeSpeed);
-        cb && setTimeout(cb, pause);
-      }
-      tick();
-    }
 
     if (prefersReduced) {
       el.textContent = FINAL_LINE;
     } else {
-      type(lines[0], () =>
-        type(lines[1], () =>
-          type(lines[2], () => {
-            el.textContent = FINAL_LINE;
-          })
-        )
-      );
+      let i = 0;
+      function type() {
+        el.textContent = FINAL_LINE.slice(0, i++);
+        if (i <= FINAL_LINE.length) setTimeout(type, 30);
+      }
+      type();
     }
   </script>
 </body>
