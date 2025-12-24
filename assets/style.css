@@ -319,13 +319,23 @@ a:focus-visible{
   .tcursor{animation:none}
 }
 
-/* SVG icon support */
+/* ===== ICON NORMALIZATION (FIX) ===== */
+
+/* Unified icon behavior */
 a svg{
   display:inline-block;
-  vertical-align:middle;
+  width:1em;
+  height:1em;
+  vertical-align:-0.125em;
   fill:currentColor;
 }
 
+/* Medium icon optical correction */
+a svg[viewBox="0 0 1043.63 592.71"]{
+  transform:scale(1.15);
+}
+
+/* Hover color */
 a:hover svg{
   color:var(--accent2);
 }
