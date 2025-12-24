@@ -39,13 +39,14 @@
           Read on Medium
         </a>
 
-        <a class="btn icon-btn" href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <!-- keep icon + text on one clean baseline -->
+        <a class="btn icon-btn" href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer" aria-label="X: @apps_ir">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill="currentColor"
               d="M18.9 2H22l-6.9 7.9L23 22h-6.8l-5.4-7.2L4.8 22H1.7l7.4-8.4L1 2h6.9l4.9 6.6L18.9 2z"/>
           </svg>
-          <span>X:</span>
-          <span>@apps_ir</span>
+          <span class="icon-text">X:</span>
+          <span class="icon-text">@apps_ir</span>
         </a>
       </div>
     </header>
@@ -89,14 +90,14 @@
     <footer class="footer">
       <div class="termbar" aria-label="Terminal signature">
         <span class="terminal-line">
-          <span class="tprompt">apps@ir:~$</span>
+          <span class="tprompt">apps@ir:~$</span><span class="tsep">&nbsp;</span>
           <span id="tcontent" class="ttext"></span><span class="tcursor">█</span>
         </span>
       </div>
 
       <div class="fine">
         <a href="https://medium.com/@undertheho0d" target="_blank" rel="noreferrer" aria-label="Medium">
-          <svg class="icon" viewBox="0 0 1043.63 592.71" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 1043.63 592.71" aria-hidden="true" focusable="false">
             <path fill="currentColor"
               d="M588.67 296.36c0 163.7-131.86 296.35-294.33 296.35C131.86 592.71 0 460.06 0 296.36S131.86 0 294.34 0c162.47 0 294.33 132.66 294.33 296.36zM1043.63 296.36c0 154.09-65.93 279.07-147.17 279.07-81.24 0-147.17-124.98-147.17-279.07S815.22 17.29 896.46 17.29c81.24 0 147.17 124.98 147.17 279.07zM749.29 296.36c0 146.22-29.52 264.79-65.93 264.79-36.41 0-65.93-118.57-65.93-264.79S646.95 31.57 683.36 31.57c36.41 0 65.93 118.57 65.93 264.79z"/>
           </svg>
@@ -105,7 +106,7 @@
         <span class="dot">•</span>
 
         <a href="https://x.com/apps__ir?s=21" target="_blank" rel="noreferrer" aria-label="X">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill="currentColor"
               d="M18.9 2H22l-6.9 7.9L23 22h-6.8l-5.4-7.2L4.8 22H1.7l7.4-8.4L1 2h6.9l4.9 6.6L18.9 2z"/>
           </svg>
@@ -114,6 +115,57 @@
     </footer>
   </main>
 
-  <!-- terminal script unchanged -->
+  <script>
+    (function () {
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const content = document.getElementById("tcontent");
+      if (!content) return;
+
+      // NOTE: we intentionally do NOT rely on leading normal spaces (HTML can collapse them).
+      // We already render a real space in the DOM via: <span class="tsep">&nbsp;</span>
+      const cmd = "whoami";
+      const identity = "Apps | Incident Response Lead + Threat Hunter";
+
+      function intervalFor(text, totalMs) {
+        const n = Math.max(1, text.length);
+        const raw = Math.round(totalMs / n);
+        return Math.max(20, Math.min(raw, 250));
+      }
+
+      function typeText(text, totalMs) {
+        return new Promise(resolve => {
+          const speed = intervalFor(text, totalMs);
+          let i = 0;
+          content.textContent = "";
+          const t = setInterval(() => {
+            content.textContent += text[i++];
+            if (i >= text.length) {
+              clearInterval(t);
+              resolve();
+            }
+          }, speed);
+        });
+      }
+
+      function sleep(ms) {
+        return new Promise(r => setTimeout(r, ms));
+      }
+
+      async function run() {
+        if (prefersReduced) {
+          content.textContent = identity;
+          return;
+        }
+
+        await typeText(cmd, 1800);
+        await sleep(450);
+
+        content.textContent = "";
+        await typeText(identity, 5200);
+      }
+
+      run();
+    })();
+  </script>
 </body>
 </html>
