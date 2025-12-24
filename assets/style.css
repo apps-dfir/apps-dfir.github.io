@@ -319,7 +319,7 @@ a:focus-visible{
   .tcursor{animation:none}
 }
 
-/* ===== SVG ICON SUPPORT (ADDED) ===== */
+/* SVG icon support */
 a svg{
   display:inline-block;
   vertical-align:middle;
