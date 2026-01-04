@@ -352,3 +352,14 @@ svg.icon[viewBox="0 0 1043.63 592.71"]{
 a:hover svg.icon{
   color:var(--accent2);
 }
+
+/* Loading state for RSS posts */
+.loading-posts .postmeta{
+  opacity:.6;
+  animation:pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%,100%{opacity:.6}
+  50%{opacity:.3}
+}
